@@ -5,6 +5,8 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import FaceDetector from './components/FaceDetector/FaceDetector';
+import Signin from './components/Signin/Signin';
+import Signup from './components/Signup/Signup';
 import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
 
@@ -29,11 +31,17 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      route: 'home',
       input: '',
       imgUrl: '',
       rounding: {
       }
     }
+  }
+  onRouteChange = (routeName) => {
+    this.setState({
+      route: routeName
+    });
   }
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
@@ -70,11 +78,22 @@ class App extends Component {
         <Particles className='particles'
           params={particleOption}
         />
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
-        <FaceDetector imgUrl={this.state.imgUrl} rounding={this.state.rounding} />
+        <Navigation route={this.state.route} routeChange={this.onRouteChange} />
+        {
+          this.state.route === 'signin'
+            ? <Signin routeChange={this.onRouteChange} />
+            : <div>
+              {
+                this.state.route === 'signup' ? <Signup routeChange={this.onRouteChange} />
+                  : <div>
+                    <Logo />
+                    <Rank />
+                    <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit} />
+                    <FaceDetector imgUrl={this.state.imgUrl} rounding={this.state.rounding} />
+                  </div>
+              }
+            </div>
+        }
       </div>
     );
   }
