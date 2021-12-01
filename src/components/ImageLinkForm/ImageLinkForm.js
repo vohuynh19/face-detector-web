@@ -4,7 +4,7 @@ const ImageLinkForm = ({ onInputChange, onSubmit }) => {
     return (
         <div>
             <div className='f4 toCenter'>
-                <div className='colorFont'> This Magic Brain will detect faces in your pictures. Give it a try! </div>
+                <div className='colorFont'> This Magic Brain will detect faces in your pictures. Give it the image URL! </div>
             </div>
             <div className='toCenter'>
                 <div className='form toCenter pa4 br3 shadow-5'>
