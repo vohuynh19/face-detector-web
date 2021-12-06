@@ -7,20 +7,50 @@ import Rank from './components/Rank/Rank';
 import FaceDetector from './components/FaceDetector/FaceDetector';
 import Signin from './components/Signin/Signin';
 import Signup from './components/Signup/Signup';
-import Particles from 'react-particles-js';
+import Particles from "react-tsparticles";
 import Clarifai from 'clarifai';
 
 const particleOption = {
   particles: {
-    line_linked: {
-      shadow: {
-        enabled: true,
-        color: "#3CA9D1",
-        blur: 5
-      }
-    }
+    color: {
+      value: "#ffffff",
+    },
+    links: {
+      color: "#ffffff",
+      distance: 150,
+      enable: true,
+      opacity: 0.5,
+      width: 1,
+    },
+    collisions: {
+      enable: true,
+    },
+    move: {
+      direction: "none",
+      enable: true,
+      outMode: "bounce",
+      random: false,
+      speed: 4,
+      straight: false,
+    },
+    number: {
+      density: {
+        enable: true,
+        value_area: 800,
+      },
+      value: 40,
+    },
+    opacity: {
+      value: 0.5,
+    },
+    shape: {
+      type: "circle",
+    },
+    size: {
+      random: true,
+      value: 5,
+    },
   }
-
 }
 
 const app = new Clarifai.App({
